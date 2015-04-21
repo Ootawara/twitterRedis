@@ -11,6 +11,8 @@ import daoImpl.UserDAOImpl;
 import services.TimelineService;
 
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.List;
 
 /**
@@ -30,9 +32,20 @@ public class TimeLineServiceImpl implements TimelineService {
         List<Tweet> tweetFollowers = new ArrayList<Tweet>();
 
         for(User follower : followers){
-
+            tweetFollowers.addAll(daoTweet.getTweet(follower.getName()));
         }
 
-        return null;
+        List<Tweet> timeLine = new ArrayList<Tweet>();
+        timeLine.addAll(tweetUser);
+        timeLine.addAll(tweetFollowers);
+        Collections.sort(timeLine, new Comparator<Tweet>() {
+            @Override
+            public int compare(Tweet  tweet1, Tweet  tweet2)
+            {
+                return  tweet1.getDate().compareTo(tweet2.getDate());
+            }
+        });
+
+        return timeLine;
     }
 }
