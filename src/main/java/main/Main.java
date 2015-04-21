@@ -2,61 +2,35 @@ package main;
 
 import java.util.*;
 
+import bean.Tweet;
 import bean.User;
 import org.apache.log4j.Logger;
 
 import redis.clients.jedis.Jedis;
+import services.TimelineService;
+import services.TotalService;
+import servicesImpl.TimeLineServiceImpl;
+import servicesImpl.TotalServiceImpl;
 
 public class Main {
 
     private static final Logger Log = Logger.getLogger(Main.class);
 
     public static void main(String[] args) {
-        // Connection au serveur Redis
-        Jedis jedis = new Jedis("localhost");
-        System.out.println("Connexion au serveur REDIS : " + jedis.ping());
 
-        // Nom des keys
-        String key1 = "legume";
-        String key2 = "lettre";
+        Datas datas = new Datas();
+        datas.generateBase();
 
-        // Ajouter une nouvelle key
-        jedis.set("key", "value");
-        jedis.set("lang", "C");
-        jedis.set("lang", "Java");
-        jedis.set("lang", "Php");
+        TimelineService service = new TimeLineServiceImpl();
+        TotalService totalService = new TotalServiceImpl();
 
-        // Retourne la valeur de la key
-        System.out.println(jedis.get("lang"));
+        List<User> listUser = datas.getList();
 
-        jedis.sadd(key1, "tomate", "haricot");
-        jedis.sadd(key2, "a", "b", "c", "d", "e", "f");
-        jedis.sadd(key2, "g", "h");
+        List<Tweet> timeline = service.getTimeLine(listUser.get(0).getName());
 
-        System.out.println(key1 + " : " + jedis.smembers(key1));
-        System.out.println(key2 + " : " + jedis.smembers(key2));
-
-        System.out.println("Les 4 dernieres entrees pour " + key2 + " sont : " + nDernierEntree(key2, jedis, 4));
-
-        // System.out.println("Clean base : "+jedis.flushDB());
-
-        System.out.println("Existence de cles : " + jedis.exists("lettre"));
-        // regarder dans les projets SONAR
-        // log.
-        // log.info("", jedis.exists("lettre"));
-        // log.info("Existence de cles : {} ", key1);
-
-        allKeys(jedis);
-        existkey(key2, jedis);
-
-        User user = new User("lol","loul");
-        Map<String, String> userProperties = new HashMap<String, String>();
-        userProperties.put("name", user.getName());
-        userProperties.put("password", user.getPassword());
-
-        jedis.hmset("user:" + user.getName(), userProperties);
-
-        System.out.println(jedis.hmget("user:" + user.getName(), "name","password"));
+        for(Tweet tweet : timeline){
+            System.out.println("Tweet : "+tweet.getUser()+" "+tweet.getBody()+" "+tweet.getDate());
+        }
     }
 
     /**
