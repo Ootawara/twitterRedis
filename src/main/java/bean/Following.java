@@ -11,11 +11,11 @@ import java.util.ArrayList;
 public class Following {
 
     private User User;
-    private ArrayList<User> followers;
+    private ArrayList<User> following;
 
-    public Following(User User, ArrayList<User> followers) {
+    public Following(User User, ArrayList<User> following) {
         this.User = User;
-        this.followers = followers;
+        this.following = following;
     }
 
     public User getUser() {
@@ -26,11 +26,11 @@ public class Following {
         this.User = User;
     }
 
-    public ArrayList<User> getFollowers() {
-        return followers;
+    public ArrayList<User> getFollowing() {
+        return following;
     }
 
-    public void setFollowers(ArrayList<User> followers) {
-        this.followers = followers;
+    public void setFollowers(ArrayList<User> following) {
+        this.following = following;
     }
 }
