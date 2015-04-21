@@ -17,7 +17,7 @@ public class UserDAOImpl implements UserDAO {
 
     static final String keyUsers = "users";
     static final String key = "user:";
-    static final String loginField = "name";
+    static final String loginField = "username";
     static final String passField = "password";
 
 
@@ -28,7 +28,7 @@ public class UserDAOImpl implements UserDAO {
         Map<String,String> userUID = new HashMap<String, String>();
         userUID.put(login, UID);
 
-        client.getClient().hmset(keyUsers, userUID);
+        client.setHM(keyUsers, userUID);
 
         Map<String,String> userProperties = new HashMap<String,String>();
         userProperties.put(loginField, login);

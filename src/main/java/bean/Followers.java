@@ -10,27 +10,27 @@ import java.util.ArrayList;
  */
 public class Followers {
 
-    private User User;
-    private ArrayList<User> followers;
+    private String userName;
+    private ArrayList<String> followers;
 
-    public Followers(User User, ArrayList<User> followers) {
-        this.User = User;
+    public Followers(String userName, ArrayList<String> followers) {
+        this.userName = userName;
         this.followers = followers;
     }
 
-    public User getUser() {
-        return User;
+    public String getUser() {
+        return userName;
     }
 
-    public void setUser(User User) {
-        this.User = User;
+    public void setUser(String User) {
+        this.userName = User;
     }
 
-    public ArrayList<User> getFollowers() {
+    public ArrayList<String> getFollowers() {
         return followers;
     }
 
-    public void setFollowers(ArrayList<User> followers) {
+    public void setFollowers(ArrayList<String> followers) {
         this.followers = followers;
     }
 
