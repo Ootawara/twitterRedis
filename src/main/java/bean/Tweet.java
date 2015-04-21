@@ -3,12 +3,12 @@ package bean;
 public class Tweet {
 
     private int timeId;
-    private Username username;
+    private User User;
     private String body;
 
-    public Tweet(int timeId, Username username, String body) {
+    public Tweet(int timeId, User User, String body) {
         this.timeId = timeId;
-        this.username = username;
+        this.User = User;
         this.body = body;
     }
 
@@ -20,12 +20,12 @@ public class Tweet {
         this.timeId = timeId;
     }
 
-    public Username getUsername() {
-        return username;
+    public User getUser() {
+        return User;
     }
 
-    public void setUsername(Username username) {
-        this.username = username;
+    public void setUser(User User) {
+        this.User = User;
     }
 
     public String getBody() {
@@ -37,7 +37,7 @@ public class Tweet {
     }
 
     public String toString() {
-        return "Tweet [timeId=" + timeId + ", username=" + username + ", body=" + body + "]";
+        return "Tweet [timeId=" + timeId + ", User=" + User + ", body=" + body + "]";
     }
 
 }

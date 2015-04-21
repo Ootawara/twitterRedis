@@ -1,17 +1,16 @@
 package dao;
 
+import bean.Tweet;
+import bean.User;
+
 import java.util.List;
 
-import bean.Tweet;
-import bean.Username;
-
-public interface  TweetDAO {
+public interface TweetDAO {
 	
-    public List<Tweet> getAllTweet();    
-    public List<Tweet> getTweetByUser(Username user);
+    public List<Tweet> getAllTweet();
+    public List<Tweet> getTweetByUser(User user);
     public Tweet getTweet(int tweetId);
     public void createTweet(Tweet tweet);
     public void deleteTweet(Tweet tweet);
 
-	
 }

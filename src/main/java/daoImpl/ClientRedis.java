@@ -1,12 +1,14 @@
-package dao;
+package daoImpl;
 
 /**
  * @author Thomas
  *
  */
 
+import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
+import java.util.Map;
 
 import redis.clients.jedis.*;
 
@@ -40,5 +42,19 @@ public class ClientRedis {
 	
 	public HashSet<String> getKeys(String s){
 		return (HashSet<String>) client.keys(s);
+	}
+
+	public Jedis getClient(){ return this.client; }
+
+	public void zRem(String value){
+		client.zrem(value);
+	}
+
+	public void delete(String value){
+		client.del(value);
+	}
+
+	public void setHM(String key, Map properties){
+		client.hmset(key, properties);
 	}
 }
