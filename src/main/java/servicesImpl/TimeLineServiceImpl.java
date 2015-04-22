@@ -24,7 +24,6 @@ public class TimeLineServiceImpl implements TimelineService {
     FollowDAO daoFollower = new FollowDAOImpl();
     TweetDAO daoTweet = new TweetDAOImpl();
 
-    @Override
     public List<Tweet> getTimeLine(String userName) {
 
         List<Tweet> tweetUser = daoTweet.getTweet(userName);
@@ -39,7 +38,7 @@ public class TimeLineServiceImpl implements TimelineService {
         timeLine.addAll(tweetUser);
         timeLine.addAll(tweetFollowers);
         Collections.sort(timeLine, new Comparator<Tweet>() {
-            @Override
+        	
             public int compare(Tweet  tweet1, Tweet  tweet2)
             {
                 return  tweet1.getDate().compareTo(tweet2.getDate());

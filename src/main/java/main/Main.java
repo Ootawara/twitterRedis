@@ -8,7 +8,7 @@ import org.apache.log4j.Logger;
 
 import redis.clients.jedis.Jedis;
 import services.TimelineService;
-import services.TotalService;
+import services.TotauxService;
 import servicesImpl.TimeLineServiceImpl;
 import servicesImpl.TotalServiceImpl;
 
@@ -22,7 +22,7 @@ public class Main {
         datas.generateBase();
 
         TimelineService service = new TimeLineServiceImpl();
-        TotalService totalService = new TotalServiceImpl();
+        TotauxService totauxService = new TotalServiceImpl();
 
         List<User> listUser = datas.getList();
 

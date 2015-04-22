@@ -23,7 +23,6 @@ public class TotalServiceImpl implements TotauxService {
     FollowingDAO daoFollowing = new FollowingDAOImpl();
     TweetDAO daoTweet = new TweetDAOImpl();
 
-    @Override
     public int totalFollowers(String userName) {
 
         List<Tweet> list = daoTweet.getTweet(userName);
@@ -31,7 +30,6 @@ public class TotalServiceImpl implements TotauxService {
         return list.size();
     }
 
-    @Override
     public int totalFollowings(String userName) {
 
         List<User> list = daoFollowing.getFollowings(userName);
@@ -39,7 +37,6 @@ public class TotalServiceImpl implements TotauxService {
         return list.size();
     }
 
-    @Override
     public int totalTweet(String userName) {
 
         List<User> list = daoFollower.getFollowers(userName);

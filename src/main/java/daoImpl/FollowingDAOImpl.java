@@ -20,7 +20,6 @@ public class FollowingDAOImpl implements FollowingDAO {
     static final String loginField = "username";
     static final String passField = "password";
 
-    @Override
     public void addFollow(String userName, String followName) {
 
         List<String> uids = client.getClient().hmget(keyUsers, userName);
@@ -33,7 +32,6 @@ public class FollowingDAOImpl implements FollowingDAO {
         client.setHM(key+UID, followProperties);
     }
 
-    @Override
     public List<User> getFollowings(String userName) {
 
         List<String> uids = client.getClient().hmget(keyUsers, userName);
