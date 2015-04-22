@@ -12,6 +12,7 @@ import daoImpl.TweetDAOImpl;
 import daoImpl.UserDAOImpl;
 
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 public class Datas {
@@ -27,10 +28,11 @@ public class Datas {
     public static User user3 = new User("nameUser3","sf");
 
     // Tweets
-    public static Tweet tweet1 = new Tweet(user1.getName(), "body of tweet 1, posted by user 1");
-    public static Tweet tweet2 = new Tweet(user1.getName(), "body of tweet 2, posted by user 1");
-    public static Tweet tweet3 = new Tweet(user2.getName(), "body of tweet 3, posted by user 2");
-    public static Tweet tweet4 = new Tweet(user3.getName(), "body of tweet 4, posted by user 3");
+    public static Tweet tweet1 = new Tweet(user1.getName(), "body of tweet 1, posted by user 1", String.valueOf(new Date().getTime()));
+    public static Tweet tweet2 = new Tweet(user1.getName(), "body of tweet 2, posted by user 1", String.valueOf(new Date().getTime()));
+    public static Tweet tweet3 = new Tweet(user2.getName(), "body of tweet 3, posted by user 2", String.valueOf(new Date().getTime()));
+    public static Tweet tweet4 = new Tweet(user3.getName(), "body of tweet 4, posted by user 3", String.valueOf(new Date().getTime()));
+
 
     public List<User> listUsers = new ArrayList<User>();
 

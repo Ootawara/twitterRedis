@@ -8,9 +8,10 @@ public class Tweet {
     private String body;
     private String dateCreated;
 
-    public Tweet(String User, String body) {
+    public Tweet(String User, String body, String date) {
         this.userName = User;
         this.body = body;
+        dateCreated = date;
     }
 
     public String getUser() {

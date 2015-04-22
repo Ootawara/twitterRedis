@@ -25,8 +25,7 @@ public class TweetDAOImpl implements TweetDAO{
 
         for(String uid : uids){
             List<String> tweetProperties = client.getClient().hmget(key+uid, idField, userField, textField, dateField);
-            Tweet toAdd = new Tweet(tweetProperties.get(0), tweetProperties.get(1));
-            toAdd.setDate(tweetProperties.get(3));
+            Tweet toAdd = new Tweet(tweetProperties.get(0), tweetProperties.get(1), tweetProperties.get(3));
             tweetsToReturn.add(toAdd);
         }
 
