@@ -10,14 +10,14 @@ import daoImpl.FollowDAOImpl;
 import daoImpl.FollowingDAOImpl;
 import daoImpl.TweetDAOImpl;
 import daoImpl.UserDAOImpl;
-import services.TotalService;
+import services.TotauxService;
 
 import java.util.List;
 
 /**
  * Created by tamiand on 21/04/2015.
  */
-public class TotalServiceImpl implements TotalService {
+public class TotalServiceImpl implements TotauxService {
 
     FollowDAO daoFollower = new FollowDAOImpl();
     FollowingDAO daoFollowing = new FollowingDAOImpl();
