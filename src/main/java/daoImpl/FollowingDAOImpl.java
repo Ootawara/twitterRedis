@@ -43,10 +43,12 @@ public class FollowingDAOImpl implements FollowingDAO {
         List<User> listToReturn = new ArrayList<User>();
         if(!followingsName.isEmpty()){
             for(String name : followingsName){
-                List<String> followingUID = client.getClient().hmget(keyUsers, name);
-                String UIDfollow = followingUID.get(0);
-                List<String> userProperties =  client.getClient().hmget(key+UIDfollow, loginField, passField);
-                listToReturn.add(new User(userProperties.get(0), userProperties.get(1)));
+            	if(name != null) {
+            		List<String> followingUID = client.getClient().hmget(keyUsers, name);
+            		String UIDfollow = followingUID.get(0);
+            		List<String> userProperties =  client.getClient().hmget(key+UIDfollow, loginField, passField);
+            		listToReturn.add(new User(userProperties.get(0), userProperties.get(1)));
+            	}
             }
         }
 

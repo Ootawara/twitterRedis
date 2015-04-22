@@ -56,11 +56,14 @@ public class Datas {
 		tweetDao.createTweet(tweet3);
 		tweetDao.createTweet(tweet4);
 
+		// user 1 followers
 		followDao.addFollow(user1.getName(), user2.getName());
 		followDao.addFollow(user1.getName(), user3.getName());
 
+		// user 2 following
 		followingDao.addFollow(user2.getName(), user1.getName());
 		followingDao.addFollow(user2.getName(), user3.getName());
+		
 	}
 
 	public List<User> getList() {

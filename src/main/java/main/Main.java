@@ -4,6 +4,7 @@ import java.util.*;
 
 import bean.Tweet;
 import bean.User;
+
 import org.apache.log4j.Logger;
 
 import redis.clients.jedis.Jedis;
@@ -40,9 +41,25 @@ public class Main {
 						+ tweet.getUser() + " Body = " + tweet.getBody()
 						+ " Date = " + tweet.getDate());
 			}
+			
+			// Nombre de followers pour un user
+			int totalFollowers = totauxService.totalFollowers((user.getName()));
+			System.out.println("Nombre de follower(s) pour " + user.getName() + " = " + totalFollowers);
+			
+			// Nombre de followers pour un user
+			int totalFollowing = totauxService.totalFollowings((user.getName()));
+			System.out.println("Nombre de following(s) pour " + user.getName() + " = " + totalFollowing);
+			
+			// Nombre de followers pour un user
+			int totalTweet = totauxService.totalTweet((user.getName()));
+			System.out.println("Nombre de Tweet écrit par " + user.getName() + " = " + totalTweet );
+			
+			
 			i++;
 
 		}
 	}
+	
+	
 
 }
