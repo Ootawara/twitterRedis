@@ -10,4 +10,5 @@ public interface UserDAO {
 
 	public User getUser(String login);
 
+	public String getUID(String user);
 }

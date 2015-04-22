@@ -5,6 +5,7 @@ import java.util.*;
 import bean.Tweet;
 import bean.User;
 
+import daoImpl.ClientRedis;
 import org.apache.log4j.Logger;
 
 import redis.clients.jedis.Jedis;
@@ -20,10 +21,16 @@ public class Main {
 	public static void main(String[] args) {
 
 		int i = 0;
-		System.out.println("Génération de la base...");
+		System.out.println("Gï¿½nï¿½ration de la base...");
 		Datas datas = new Datas();
+
+		ClientRedis client = new ClientRedis();
+
+		System.out.println(client.getClient().get("toto"));
+
+
 		datas.generateBase();
-		System.out.println("Génération de la base OK");
+		System.out.println("Gï¿½nï¿½ration de la base OK");
 
 		TimelineService service = new TimeLineServiceImpl();
 		TotauxService totauxService = new TotalServiceImpl();
@@ -37,7 +44,7 @@ public class Main {
 
 			for (Tweet tweet : timeline) {
 				System.out.println("User = " + listUser.get(i)
-						.getName() + ", Tweet n°" + i + " : User = "
+						.getName() + ", Tweet nï¿½" + i + " : User = "
 						+ tweet.getUser() + " Body = " + tweet.getBody()
 						+ " Date = " + tweet.getDate());
 			}
@@ -52,7 +59,7 @@ public class Main {
 			
 			// Nombre de followers pour un user
 			int totalTweet = totauxService.totalTweet((user.getName()));
-			System.out.println("Nombre de Tweet écrit par " + user.getName() + " = " + totalTweet );
+			System.out.println("Nombre de Tweet ï¿½crit par " + user.getName() + " = " + totalTweet );
 			
 			
 			i++;

@@ -56,4 +56,10 @@ public class UserDAOImpl implements UserDAO {
         User toReturn = new User(userProperties.get(0), userProperties.get(1));
         return toReturn;
     }
+
+    public String getUID(String userName){
+        List<String> uids = client.getClient().hmget(keyUsers, userName);
+        String uidToGet = uids.get(0);
+        return uidToGet;
+    }
 }
