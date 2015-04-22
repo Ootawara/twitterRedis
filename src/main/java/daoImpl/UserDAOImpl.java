@@ -8,6 +8,8 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import utils.ramdom;
+
 /**
  * Created by tamiand on 21/04/2015.
  */
@@ -23,7 +25,7 @@ public class UserDAOImpl implements UserDAO {
 
     public void createUser(String login, String password) {
 
-        String UID = String.valueOf(new Date().getTime());
+        String UID = String.valueOf(new Date().getTime() + ramdom.randInt(0, 9999));
 
         Map<String,String> userUID = new HashMap<String, String>();
         userUID.put(login, UID);

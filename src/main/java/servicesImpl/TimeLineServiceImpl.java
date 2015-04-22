@@ -29,11 +29,15 @@ public class TimeLineServiceImpl implements TimelineService {
         List<Tweet> tweetUser = daoTweet.getTweet(userName);
         List<User> followers = daoFollower.getFollowers(userName);
         List<Tweet> tweetFollowers = new ArrayList<Tweet>();
+        
 
-        for(User follower : followers){
-            tweetFollowers.addAll(daoTweet.getTweet(follower.getName()));
+        if(!followers.isEmpty()){
+        	for(User follower : followers){
+        		if(follower.getName() != null) {
+        		tweetFollowers.addAll(daoTweet.getTweet(follower.getName()));
+        		}
+        	}
         }
-
         List<Tweet> timeLine = new ArrayList<Tweet>();
         timeLine.addAll(tweetUser);
         timeLine.addAll(tweetFollowers);

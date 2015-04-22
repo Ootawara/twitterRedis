@@ -1,10 +1,11 @@
 package daoImpl;
 
 import bean.Tweet;
-import bean.User;
 import dao.TweetDAO;
 
 import java.util.*;
+
+import utils.ramdom;
 
 public class TweetDAOImpl implements TweetDAO{
 
@@ -25,7 +26,7 @@ public class TweetDAOImpl implements TweetDAO{
 
         for(String uid : uids){
             List<String> tweetProperties = client.getClient().hmget(key+uid, idField, userField, textField, dateField);
-            Tweet toAdd = new Tweet(tweetProperties.get(0), tweetProperties.get(1), tweetProperties.get(3));
+            Tweet toAdd = new Tweet(tweetProperties.get(1), tweetProperties.get(2), tweetProperties.get(3));
             tweetsToReturn.add(toAdd);
         }
 
@@ -34,7 +35,7 @@ public class TweetDAOImpl implements TweetDAO{
 
     public void createTweet(Tweet tweet) {
 
-        String UID = String.valueOf(new Date().getTime());
+        String UID = String.valueOf(new Date().getTime() + ramdom.randInt(0, 9999));
 
         Map<String, String> tweetUID = new HashMap<String, String>();
         tweetUID.put(tweet.getUser(), UID);
